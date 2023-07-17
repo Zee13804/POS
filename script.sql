@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [APOSDB]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Database [APOSDB]    Script Date: 7/17/2023 7:56:11 PM ******/
 CREATE DATABASE [APOSDB]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -75,7 +75,7 @@ ALTER DATABASE [APOSDB] SET DELAYED_DURABILITY = DISABLED
 GO
 USE [APOSDB]
 GO
-/****** Object:  Table [dbo].[purchase]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[purchase]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,7 +109,7 @@ CREATE TABLE [dbo].[purchase](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[return_item]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[return_item]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -141,7 +141,7 @@ CREATE TABLE [dbo].[return_item](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[sales_item]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[sales_item]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -171,7 +171,7 @@ CREATE TABLE [dbo].[sales_item](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[sales_payment]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[sales_payment]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -195,6 +195,7 @@ CREATE TABLE [dbo].[sales_payment](
 	[ovdisrate] [decimal](18, 2) NULL,
 	[vaterate] [decimal](18, 2) NULL,
 	[logdate] [datetime] NULL CONSTRAINT [DF_sales_payment_logdate]  DEFAULT (getdate()),
+	[SaleType] [varchar](50) NULL,
  CONSTRAINT [PK_sales_payment] PRIMARY KEY CLUSTERED 
 (
 	[sales_id] ASC
@@ -204,7 +205,7 @@ CREATE TABLE [dbo].[sales_payment](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[storeconfig]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[storeconfig]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -227,7 +228,7 @@ CREATE TABLE [dbo].[storeconfig](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[tbl_adv_sal]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[tbl_adv_sal]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -245,7 +246,7 @@ CREATE TABLE [dbo].[tbl_adv_sal](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[tbl_category]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[tbl_category]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -260,7 +261,7 @@ CREATE TABLE [dbo].[tbl_category](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[tbl_CustCredit]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[tbl_CustCredit]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -280,7 +281,7 @@ CREATE TABLE [dbo].[tbl_CustCredit](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[tbl_customer]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[tbl_customer]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -301,7 +302,7 @@ CREATE TABLE [dbo].[tbl_customer](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[tbl_duepayment]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[tbl_duepayment]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -328,7 +329,7 @@ CREATE TABLE [dbo].[tbl_duepayment](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[tbl_expense]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[tbl_expense]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -354,7 +355,7 @@ CREATE TABLE [dbo].[tbl_expense](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[tbl_payroll]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[tbl_payroll]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -388,7 +389,7 @@ CREATE TABLE [dbo].[tbl_payroll](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[tbl_purchase_history]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[tbl_purchase_history]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -417,7 +418,7 @@ CREATE TABLE [dbo].[tbl_purchase_history](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[tbl_saleInfo]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[tbl_saleInfo]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -441,7 +442,7 @@ CREATE TABLE [dbo].[tbl_saleInfo](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[tbl_terminalLocation]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[tbl_terminalLocation]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -470,7 +471,7 @@ CREATE TABLE [dbo].[tbl_terminalLocation](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[tbl_workrecords]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[tbl_workrecords]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -484,7 +485,7 @@ CREATE TABLE [dbo].[tbl_workrecords](
 	[logdate] [smalldatetime] NULL,
 	[logtime] [smalldatetime] NULL,
 	[logdatetime] [smalldatetime] NULL,
-	[status] [int] NULL,
+	[status] [int] NULL CONSTRAINT [DF__tbl_workr__statu__5DCAEF64]  DEFAULT ((1)),
  CONSTRAINT [PK_tbl_workrecords] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -494,7 +495,7 @@ CREATE TABLE [dbo].[tbl_workrecords](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[test]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[test]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -510,7 +511,7 @@ CREATE TABLE [dbo].[test](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[trincro]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[trincro]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -520,7 +521,7 @@ CREATE TABLE [dbo].[trincro](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[userattendence]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[userattendence]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -546,7 +547,7 @@ CREATE TABLE [dbo].[userattendence](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[usermgt]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  Table [dbo].[usermgt]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -578,7 +579,7 @@ CREATE TABLE [dbo].[usermgt](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  View [dbo].[CustomerCredit]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  View [dbo].[CustomerCredit]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -592,7 +593,7 @@ AS
 	group by  Customers.ID, Customers.Name, Customers.Phone, Customers.Address ,Customers.EmailAddress, Customers.City,Customers.PeopleType
 
 GO
-/****** Object:  View [dbo].[vw_CustCreditReport]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  View [dbo].[vw_CustCreditReport]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -606,7 +607,7 @@ AS
 		--ORDER BY cc.Date DESC
 
 GO
-/****** Object:  View [dbo].[vw_General_Ledger]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  View [dbo].[vw_General_Ledger]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -620,7 +621,7 @@ AS
 		GROUP BY sp.sales_time
 
 GO
-/****** Object:  View [dbo].[vw_itemdisplay_sr]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  View [dbo].[vw_itemdisplay_sr]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -630,7 +631,7 @@ AS
 		  select Top 12 * from purchase ORDER BY NEWID()
 
 GO
-/****** Object:  View [dbo].[vw_workrecords]    Script Date: 7/17/2023 7:39:44 PM ******/
+/****** Object:  View [dbo].[vw_workrecords]    Script Date: 7/17/2023 7:56:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -644,8 +645,6 @@ AS
 		 CONVERT(VARCHAR(8), DATEADD(MS, DATEDIFF(MS, MIN(logtime), MAX(logtime)), 0), 114) AS 'HOURS'
 		from tbl_workrecords group by username , logdate
 
-GO
-ALTER TABLE [dbo].[tbl_workrecords] ADD  CONSTRAINT [DF__tbl_workr__statu__5DCAEF64]  DEFAULT ((1)) FOR [status]
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'1= Sold 2= Returned' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'sales_item', @level2type=N'COLUMN',@level2name=N'status'
 GO
